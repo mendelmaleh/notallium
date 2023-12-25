@@ -52,4 +52,8 @@ class MakeListVH(
         binding.EditText.setText(item.body)
         binding.CheckBox.isChecked = item.checked
     }
+
+    fun update(item: ListItem) {
+        binding.EditText.isEnabled = !item.checked
+    }
 }

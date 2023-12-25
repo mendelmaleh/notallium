@@ -56,6 +56,11 @@ class MakeList : NotallyActivity(Type.LIST) {
         binding.RecyclerView.adapter = adapter
     }
 
+    override fun refresh() {
+        super.refresh()
+
+        adapter.notifyDataSetChanged()
+    }
 
     private fun addListItem() {
         val position = model.items.size

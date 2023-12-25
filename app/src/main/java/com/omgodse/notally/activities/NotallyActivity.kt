@@ -140,6 +140,7 @@ abstract class NotallyActivity(private val type: Type) : AppCompatActivity() {
         setupImages()
     }
 
+    open fun refresh() {}
 
     private fun handleSharedNote() {
         val title = intent.getStringExtra(Intent.EXTRA_SUBJECT)
@@ -175,6 +176,14 @@ abstract class NotallyActivity(private val type: Type) : AppCompatActivity() {
             val add = { Operations.displayAddLabelDialog(this@NotallyActivity, model::insertLabel) { label() } }
             Operations.labelNote(this@NotallyActivity, labels, model.labels, onUpdated, add)
         }
+    }
+
+    private fun toggleAll() {
+        model.items.forEach {
+            it.checked = !it.checked
+        }
+
+        this.refresh()
     }
 
     private fun selectImages() {
@@ -328,6 +337,10 @@ abstract class NotallyActivity(private val type: Type) : AppCompatActivity() {
         menu.add(R.string.share, R.drawable.share) { share() }
         menu.add(R.string.labels, R.drawable.label) { label() }
         menu.add(R.string.add_images, R.drawable.add_images) { checkNotificationPermission() }
+
+        if (this.type == Type.LIST) {
+            menu.add(R.string.toggle_all, R.drawable.checkbox) { toggleAll() }
+        }
 
         when (model.folder) {
             Folder.NOTES -> {
