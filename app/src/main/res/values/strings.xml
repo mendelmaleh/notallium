@@ -16,7 +16,7 @@
     <string name="restore">Restore</string>
     <string name="archive">Archive</string>
     <string name="unarchive">Unarchive</string>
-    <string name="toggle_all">Toggle all</string>
+    <string name="reset">Reset</string>
     <string name="add_images">Add images</string>
     <string name="delete_all">Delete all</string>
     <string name="change_color">Change color</string>
