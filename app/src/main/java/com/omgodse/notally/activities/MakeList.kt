@@ -17,9 +17,7 @@ class MakeList : NotallyActivity(Type.LIST) {
         }
 
         if (model.isNewNote) {
-            if (model.items.isEmpty()) {
-                addListItem()
-            }
+            binding.EnterTitle.requestFocus()
         }
     }
 

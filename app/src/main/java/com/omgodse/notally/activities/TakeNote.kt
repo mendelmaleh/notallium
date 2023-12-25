@@ -33,7 +33,7 @@ class TakeNote : NotallyActivity(Type.NOTE) {
         setupEditor()
 
         if (model.isNewNote) {
-            binding.EnterBody.requestFocus()
+            binding.EnterTitle.requestFocus()
         }
     }
 
