@@ -179,10 +179,12 @@ abstract class NotallyActivity(private val type: Type) : AppCompatActivity() {
     }
 
     private fun reset() {
-        model.items.forEach {
-            it.checked = false
-        }
+        model.items.forEach { it.checked = false }
+        this.refresh()
+    }
 
+    private fun sort() {
+        model.items.sortBy { it.checked }
         this.refresh()
     }
 
@@ -339,7 +341,8 @@ abstract class NotallyActivity(private val type: Type) : AppCompatActivity() {
         menu.add(R.string.add_images, R.drawable.add_images) { checkNotificationPermission() }
 
         if (this.type == Type.LIST) {
-            menu.add(R.string.reset, R.drawable.checkbox) { reset() }
+            menu.add(R.string.reset, R.drawable.checkbox_outline) { reset() }
+            menu.add(R.string.sort, R.drawable.drag_handle) { sort() }
         }
 
         when (model.folder) {
